@@ -52,10 +52,10 @@ if (-not (Get-Command choco -ErrorAction SilentlyContinue)) {
 }
 # List of packages to install/update
 $packages = @(
-    "7zip", "advanced-ip-scanner", "adobereader",  "azure-cli", "bleachbit",
+    "chocolateygui" "7zip", "advanced-ip-scanner", "adobereader",  "azure-cli", "bleachbit",
     "cpu-z", "curl", "ditto", "docker-desktop", "discord", "everything", "expresso", 
     "file-converter", "filezilla", "fiddler",
-    "firefox", "gnupg", "gpg4win", "git", "hwinfo", "irfanview", "jdownloader",
+    "firefox", "gnupg", "gpg4win", "git", "googlechrome", "hwinfo", "irfanview", "jdownloader",
     "jetbrainstoolbox", "kate", "kodi", "mremoteng", "nmap", "notepadplusplus", "nugetpackageexplorer",
     "office365business", "obs-virtualcam", "obsidian", "openvpn-connect", "plasso", "postman",
     "powertoys", "protonmail", "protonvpn", "putty.install", "raidrive", "revo-uninstaller",
