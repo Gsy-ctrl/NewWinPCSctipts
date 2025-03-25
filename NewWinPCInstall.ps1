@@ -98,6 +98,26 @@ foreach ($chromeExtensionUrl in $chromeExtensions) {
     Start-Process "chrome.exe" -ArgumentList $chromeExtensionUrl
 }
 
+# Script to create a scheduled task for Chocolatey updates
+
+$TaskName = "ChocolateyUpdate"
+$TaskDescription = "Updates Chocolatey packages daily at 4 AM"
+$Action = New-ScheduledTaskAction -Execute "choco.exe" -Argument "upgrade all -y"
+$Trigger = New-ScheduledTaskTrigger -Daily -At 4am
+$Principal = New-ScheduledTaskPrincipal -UserId ([System.Security.Principal.WindowsIdentity]::GetCurrent().User.Value) -RunLevel Highest
+
+# Check if the task already exists
+if (Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue) {
+    Write-Warning "Task '$TaskName' already exists. Updating it."
+    Set-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Principal $Principal -Description $TaskDescription
+} else {
+    Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Principal $Principal -Description $TaskDescription
+    Write-Host "Task '$TaskName' created successfully."
+}
+
+# Optional: Set the task to run even if the user is not logged in.
+Get-ScheduledTask -TaskName $TaskName | Set-ScheduledTask -User "SYSTEM" -RunLevel Highest -Settings (New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -RunOnlyIfNetworkAvailable -Hidden)
+
 Write-Host "All installations complete!" -ForegroundColor Green
 
 #endregion
