@@ -33,7 +33,7 @@ function Install-OrUpdate-Package {
 #endregion
 
 #region Main Script
-
+Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "PrintScreenKeyForSnippingEnabled" -Value 1
 # Check internet connectivity
 if (-not (Test-InternetConnectivity)) {
     Write-Host "No internet connection. Exiting." -ForegroundColor Red
