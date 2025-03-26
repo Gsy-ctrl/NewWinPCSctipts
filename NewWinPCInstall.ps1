@@ -59,9 +59,9 @@ $packages = @(
     "jetbrainstoolbox", "kate", "kodi", "mremoteng", "nmap", "notepadplusplus", "nugetpackageexplorer",
     "office365business", "obs-virtualcam", "obsidian", "openvpn-connect", "plasso", "postman",
     "powertoys", "protonmail", "protonvpn", "putty.install", "raidrive", "revo-uninstaller",
-    "servicebusexplorer", "sidebar-diagnostics", "spotify", "start11", "streamio", "sumatrapdf",
+    "servicebusexplorer", "sidebar-diagnostics", "spotify", "start11", "streamio", "sumatrapdf", "Steam"
     "tailscale", "tapwindows", "trufflehog", "virtualbox", "vault", "vscode", "wireshark", "wingetui",
-    "wiztree", "winscp", "apimonitor", "greenshot"
+    "wiztree", "winscp", "apimonitor", "greenshot", "usbpcap", "sophiapp", "ferdium", "unchecky"
 )
 $sortedPackages = $packages | Sort-Object
 foreach ($package in $sortedPackages) {
